@@ -13,7 +13,7 @@
 <body>
     <header>
         <nav class="navbar text-light bg-dark p-3">
-        <div class="container-fluid p-3">
+        <div class="container-fluid p-3 justify-content-center">
           <h1><i class="ml-3 fas fa-cloud-sun mr-2"></i>Weather Dashboard</h1>
         </div>
       </nav>
@@ -21,19 +21,31 @@
     
 
     <div class="row p-md-5 p-3">
-      <div class="container">
-        <div class="col-12 col-3">
-          <div class="card" style="width: 18rem;">
-                  <div class="card-body">
-                    <h3 class="card-title bg-secondary text-light">Search for Your City</h3>
-                      <div class="input-group m-3" id="city-f">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+      
+        <div class="col-12 col-md-3 justify-content-center">
+
+          <div class="card bg-warning" style="width: 20rem;">
+                <div class="card-body">
+                    <h3 class="card-header bg-dark text-light" >Search for Your City</h3>
+                      <div class="input-group m-4" id="city-form">
+                        <button id="search-btn" type="button" class="btn btn-primary btn-info"><i class="fas fa-search"></i></button>
+                        <input id="city-input" class="input-group-text col-9 mr-2 form-input" name="city" type="text"></input>
                       </div>
-                  </div>
+                </div>
+          </div>
+
+          <div class="card bg-warning mt-2" style="width: 20rem;" id="recent-cities">
+            <div class="card-body justify-content-center">
+              <h3 class="card-header bg-dark text-light">Recent Cities</h3>
+            </div>
           </div>
         </div>
            
+      <div></div>
+
+
+
+
       </div>
       
       
