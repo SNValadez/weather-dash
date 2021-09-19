@@ -14,7 +14,7 @@
     <header>
         <nav class="navbar text-light bg-dark p-3">
         <div class="container-fluid p-3 justify-content-center">
-          <h1><i class="ml-3 fas fa-cloud-sun mr-2"></i>Weather Dashboard</h1>
+          <h1><i class="ml-3 fas fa-cloud-sun mr-2" style="color: rgb(231, 174, 31);"></i>Weather Dashboard</h1>
         </div>
       </nav>
     </header>
@@ -22,7 +22,7 @@
 
     <div class="row p-md-5 p-3">
       
-        <div class="col-12 col-md-3 justify-content-center">
+        <div class="col-12 col-md-3">
 
           <div class="card bg-warning" style="width: 20rem;">
                 <div class="card-body">
@@ -41,7 +41,24 @@
           </div>
         </div>
            
-      <div></div>
+      <div class="col-12 col-md-6 city-forecast hide">
+
+        <div class="card bg-color-light mt-4 mt-md-0">
+          <h3 class="card-header bg-dark text-light">Today's Forecast</h3>
+          <div class="container">
+            <div class="container">
+              <div class="row">
+                <h4 class="ml-2">
+                  <span class="align-middle" id="city-name">City Name</span>
+                  <img class="weather-icon" id="today-icon" />
+                </h4>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
 
 
 
