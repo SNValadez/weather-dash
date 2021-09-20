@@ -3,26 +3,26 @@
 
 var apiKey = "ca63269de287a28079e1710279049971";
 var cityInput = document.querySelector("#city-input");
-var example = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+// var example = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
 // var ex2 = `api.openweathermap.org/data/2.5/weather?q=Dallas&appid=${apiKey}`
 var cityBtn = document.querySelector("#search-btn");
 var cityNameEl = document.querySelector("#city-name");
-var cityArr = [];
+var myArr = [];
 
-console.log(example);
+// console.log(example);
 
-function myFunction() {
-  fetch(example)
-    .then(function (response) {
-        console.log(response);
-      response.json();
-    })
-    .then(function (data) {
-      console.log(data);
-    });
-}
+// function myFunction() {
+//   fetch(example)
+//     .then(function (response) {
+//         console.log(response);
+//       response.json();
+//     })
+//     .then(function (data) {
+//       console.log(data);
+//     });
+// }
 
-myFunction();
+// myFunction();
 
 var formHandler = function(event) {
 
@@ -105,7 +105,7 @@ var currentForecast = function(forecast) {
 
   displayTemp("#current-temp", forecast.current["temp"]);
   displayTemp("#current-feels-like", forecast.current["feels_like"]);
-  displayTemp("#current-high", forcast.daily[0].temp.max);
+  displayTemp("#current-high", forecast.daily[0].temp.max);
   displayTemp("#current-low", forecast.daily[0].temp.min);
 
   var currentConditionEl = document.querySelector("#current-condition");
@@ -162,24 +162,24 @@ var fiveDayForecast = function(forecast) {
 
 var saveCity = function (city) {
 
-  for (var i = 0; i < cityArr.length; i++) {
-    if (city === cityArr[i]) {
-      cityArr.splice(i, 1);
+  for (var i = 0; i < myArr.length; i++) {
+    if (city === myArr[i]) {
+      myArr.splice(i, 1);
     }
   }
 
-  cityArr.push(city);
-  localStorage.setItem("cities", JSON.stringify(cityArr));
+  myArr.push(city);
+  localStorage.setItem("cities", JSON.stringify(myArr));
 }
 
 var loadCities = function() {
-  cityArr = JSON.parse(localStorage.getItem("cities"));
+  myArr = JSON.parse(localStorage.getItem("cities"));
 
-    if (!cityArr) {
-      cityArr = [];
+    if (!myArr) {
+      myArr = [];
       return false;
-    } else if (cityArr.length > 5) {
-      cityArr.shift();
+    } else if (myArr.length > 5) {
+      myArr.shift();
     }
 
     var recentCities = document.querySelector("#recent-cities");
@@ -187,12 +187,12 @@ var loadCities = function() {
     cityListUl.className = "list-group list-group-flush city-list";
     recentCities.appendChild(cityListUl);
 
-    for (var i = 0; i < cityArr.length; i++) {
+    for (var i = 0; i < myArr.length; i++) {
       var cityListItem = document.createElement("button");
       cityListItem.setAttribute("type", "button");
       cityListItem.className = "list-group-item";
-      cityListItem.setAttribute("value", cityArr[i]);
-      cityListItem.textContent = cityArr[i];
+      cityListItem.setAttribute("value", myArr[i]);
+      cityListItem.textContent = myArr[i];
       cityListUl.prepend(cityListItem);
     }
 
@@ -200,3 +200,17 @@ var loadCities = function() {
     cityList.addEventListener("click", selectRecent)
 }
 
+var selectRecent = function (event) {
+  var clickedCity = event.target.getAttribute("value");
+
+  getCoords(clickedCity);
+}
+
+loadCities();
+cityBtn.addEventListener("click", formHandler)
+
+cityInput.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+    cityBtn.click();
+  }
+});
