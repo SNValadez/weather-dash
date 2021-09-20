@@ -43,7 +43,7 @@
            
       <div class="col-12 col-md-9 city-forecast hide">
 
-        <div class="card bg-color-light mt-4 mt-md-0 justify-content-right">
+        <div class="card bg-warning mt-4 mt-md-0 justify-content-right">
           <h3 class="card-header bg-dark text-light">Today's Forecast</h3>
           <div class="container">
             <div class="container">
@@ -61,15 +61,50 @@
                   <p class="pl-3">Humidity: <span id="current-humidity"></span>%</p>
                 </div>
                 <div class="col-12 col-md-6">
-                  <p ></p>
+                  <p class="pl-3">High: <span id="current-high"></span> &deg;F</p>
+                  <p class="pl-3">Low: <span id="current-low"></span> &deg;F</p>
+                  <p class="pl-3">UV Index: <span id="current-uvi"></span></p>
+                  <p class="pl-3">Wind Speed: <span id="current-wind-speed"></span>MPH</p>
+                </div>
+              </div>
+            </div>
+          </div>  
+        </div>
 
+        <div class="card bg-warning mt-4">
+          <h3 class="card-header bg-dark text-light">Five Day Forecast</h3>
+          <div class="container p-3">
+            <div class="row row-cols-1 row-cols-md-5">
+
+              <div class="col">
+                <div class="card bg-info text-light p-2 mb-3 mb-md-0">
+                  <p id="date-1" class="badge badge-light mb-1"></p>
+                  <h4 class="align-middle">
+                    <img class="weather-icon" id="icon-1">
+                    <span id="temp-1"></span> &deg;F
+                  </h4>
+                  <p class="mb-1">High: <span id="high-1"></span> &deg;F</p>
+                  <p class="mb-1">Low: <span id="low-1"></span> &deg;F</p>
+                  <p class="mb-1">Humidity: <span id="humidity-1"></span>%</p>
                 </div>
               </div>
 
-            </div>
-          </div>
-        </div>
 
+
+
+
+
+
+            </div>
+
+
+          </div>
+
+
+
+
+
+        </div>
 
 
 
