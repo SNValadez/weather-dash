@@ -42,4 +42,29 @@ var formHandler = function(event) {
     };
 };
 
+var getCoords = function (city) {
+  var example = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+  
+  fetch (example).then(function(response) {
+    if (response.ok) {
+      response.json().then(function(data) {
+        var long = data.coord["lon"];
+        var lati = data.coord["lat"];
+        getCityForecast(city, long, lati);
+
+        if (document.querySelector(".city-list")) {
+            document.querySelector(".city-list").remove();
+        }
+
+        saveCity(city);
+        loadCities();
+      });
+    } else {
+      alert(`Error: ${response.statusText}`)
+    }
+  })
+  .catch(function(error) {
+    alert("Unable to load weather.");
+  })
+}
 
