@@ -172,3 +172,31 @@ var saveCity = function (city) {
   localStorage.setItem("cities", JSON.stringify(cityArr));
 }
 
+var loadCities = function() {
+  cityArr = JSON.parse(localStorage.getItem("cities"));
+
+    if (!cityArr) {
+      cityArr = [];
+      return false;
+    } else if (cityArr.length > 5) {
+      cityArr.shift();
+    }
+
+    var recentCities = document.querySelector("#recent-cities");
+    var cityListUl = document.createElement('ul');
+    cityListUl.className = "list-group list-group-flush city-list";
+    recentCities.appendChild(cityListUl);
+
+    for (var i = 0; i < cityArr.length; i++) {
+      var cityListItem = document.createElement("button");
+      cityListItem.setAttribute("type", "button");
+      cityListItem.className = "list-group-item";
+      cityListItem.setAttribute("value", cityArr[i]);
+      cityListItem.textContent = cityArr[i];
+      cityListUl.prepend(cityListItem);
+    }
+
+    var cityList = document.querySelector(".city-list");
+    cityList.addEventListener("click", selectRecent)
+}
+
