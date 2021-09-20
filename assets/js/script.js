@@ -68,3 +68,24 @@ var getCoords = function (city) {
   })
 }
 
+var getCityForecast = function(city, long, lati) {
+  var oneCallApi = `https://api.openweathermap.org/data/2.5/onecall?lat=${lati}&lon=${long}&units=imperial&exclude=minutely,hourly,alerts&appid=${apiKey}`;
+
+    fetch(oneCallApi).then(function(response) {
+
+      if (response.ok) {
+        response.json().then(function(data) {
+
+          cityNameEl.textContent = `${city} (${moment().format("M/D/YYYY")})`;
+          console.log(data)
+
+          currentForecast(data);
+          fiveDayForecast(data);
+        });
+      }
+    })
+}
+
+var displayTemp = function(element, temperature) {
+  
+}
